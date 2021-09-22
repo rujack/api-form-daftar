@@ -6,6 +6,8 @@ const app = express();
 const authRoutes = require("./src/routes/auth");
 const formRoutes = require("./src/routes/form");
 
+let PORT = process.env.PORT || 4000
+
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", "*");
@@ -33,6 +35,6 @@ mongoose
     "mongodb+srv://sandal123:sandal@cluster0.asykz.mongodb.net/Database?retryWrites=true&w=majority&ssl=true",
   )
   .then(() => {
-    app.listen(4000, () => console.log("Connection berhasil"));
+    app.listen(PORT, () => console.log("Connection berhasil"));
   })
   .catch((err) => console.log(err));
